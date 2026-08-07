@@ -1,4 +1,4 @@
-"""Generate high-resolution 3D screenshots for GitHub documentation."""
+"""Generate multi-angle high-resolution 3D screenshots for GitHub documentation."""
 from pathlib import Path
 import vtk
 
@@ -50,7 +50,7 @@ def capture_screenshot(renderer, window, filename_out, camera_pos_offset=(0, -2.
 
     w2i = vtk.vtkWindowToImageFilter()
     w2i.SetInput(window)
-    w2i.SetScale(2)  # High-DPI 2x supersampling
+    w2i.SetScale(2)  # 2x High-DPI supersampling
     w2i.Update()
 
     writer = vtk.vtkPNGWriter()
@@ -82,7 +82,7 @@ def main():
     window.SetSize(1200, 900)
     window.AddRenderer(renderer)
 
-    # 1. Full Frontal Overview
+    # Base setup
     body.SetVisibility(True)
     bone.SetVisibility(True)
     thyroid_ct.SetVisibility(True)
@@ -90,22 +90,36 @@ def main():
     thyroid.SetVisibility(False)
     coronary.SetVisibility(False)
     spine.SetVisibility(False)
+
+    # 1. Frontal Overview
     capture_screenshot(renderer, window, "01_full_overview_front.png", camera_pos_offset=(0, -2.0, 0))
 
-    # 2. Oblique View
-    capture_screenshot(renderer, window, "02_oblique_3d_view.png", camera_pos_offset=(1.5, -1.5, 0.6))
+    # 2. Back (Posterior) View
+    capture_screenshot(renderer, window, "02_full_overview_back.png", camera_pos_offset=(0, 2.0, 0))
 
-    # 3. Bone & Cardiovascular (Body Hidden)
+    # 3. Right Oblique 3D View
+    capture_screenshot(renderer, window, "03_oblique_right.png", camera_pos_offset=(1.5, -1.5, 0.5))
+
+    # 4. Left Oblique 3D View
+    capture_screenshot(renderer, window, "04_oblique_left.png", camera_pos_offset=(-1.5, -1.5, 0.5))
+
+    # 5. Skeletal & Cardiovascular (Body Hidden)
     body.SetVisibility(False)
     coronary.SetVisibility(True)
     spine.SetVisibility(True)
-    capture_screenshot(renderer, window, "03_bone_and_cardiovascular.png", camera_pos_offset=(-1.2, -1.6, 0.4))
+    capture_screenshot(renderer, window, "05_bone_and_cardiovascular.png", camera_pos_offset=(-1.2, -1.6, 0.4))
 
-    # 4. Thyroid & Cervical Spine Close-up
+    # 6. Thyroid & Cervical Spine Frontal Close-up
     thyroid.SetVisibility(True)
-    capture_screenshot(renderer, window, "04_thyroid_neck_detail.png", camera_pos_offset=(0, -0.8, 0.8), zoom_factor=2.2)
+    capture_screenshot(renderer, window, "06_thyroid_neck_detail_front.png", camera_pos_offset=(0, -0.8, 0.8), zoom_factor=2.2)
 
-    print("All screenshots successfully captured!")
+    # 7. Thyroid & Cervical Spine Side Close-up
+    capture_screenshot(renderer, window, "07_thyroid_neck_detail_side.png", camera_pos_offset=(0.8, -0.4, 0.8), zoom_factor=2.2)
+
+    # 8. Superior / Top-Down View
+    capture_screenshot(renderer, window, "08_superior_top_down.png", camera_pos_offset=(0, -0.1, 2.2), view_up=(0, 1, 0))
+
+    print("All 8 multi-angle screenshots successfully generated!")
 
 
 if __name__ == "__main__":
