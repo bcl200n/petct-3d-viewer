@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.dll
+*.exe
+
+# Environments
+.venv/
+env/
+venv/
+ENV/
+
+# DICOM and Large Data files
+*.dcm
+*.dat
+*.xml
+*.jpg
+*.png
+*.zip
+DICOMDIR
+Data*/
+NMScreenCutSetting/
+MultNMSoftInfo/
+images/
+organ_3d/
+
+# Temporary / OS files
+temp.txt
+default.txt
+InfoFromDatabase.txt
+.DS_Store
+Thumbs.db
