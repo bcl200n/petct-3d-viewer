@@ -2,6 +2,15 @@
 
 A high-performance 3D surface rendering and organ segmentation viewer framework for PET/CT medical DICOM datasets, built with Python and VTK.
 
+> [!WARNING]
+> ### ⚠️ Medical Disclaimer / 免责声明
+> 
+> **中文**：本项目及所包含的代码、算法与 3D 可视化渲染框架**仅供教学、学术研究与技术交流学习**使用。本项目中的任何三维模型、器官分割及渲染结果**严禁作为临床诊断、医疗决策或任何官方医学参考依据**。
+> 
+> **English**: *This software framework, algorithms, and 3D visualization renders are intended strictly for **educational, learning, and academic research purposes only**. They MUST NOT be used for any clinical diagnosis, treatment decisions, patient management, or medical reference.*
+
+---
+
 > [!NOTE]
 > **Data Privacy & Repository Notice**: This repository provides the complete **open-source viewing software framework, processing scripts, and visualization environment**. Raw patient DICOM datasets and extracted 3D mesh files (`organ_3d/`, `Data*/`, `.dcm`, `.vtp`) are strictly excluded via `.gitignore` for data privacy and lightness.
 
@@ -119,4 +128,5 @@ petct-3d-viewer/
 ---
 
 ## ⚖️ License & Medical Disclaimer
-*Note: This framework is intended for 3D visualization research and educational software development.*
+
+> **IMPORTANT**: This repository and software framework are provided solely for educational, academic research, and software development demonstration purposes. It does not provide medical advice or clinical diagnostic capability.
