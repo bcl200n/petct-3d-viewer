@@ -7,7 +7,7 @@ import os
 import glob
 import vtk
 
-base = r'D:\边绍康华西检查\打包 (2) (1)\打包_data'
+base = os.path.dirname(os.path.abspath(__file__))
 output_dir = os.path.join(base, 'images')
 
 def load_volume(data_folder):

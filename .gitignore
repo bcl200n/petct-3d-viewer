@@ -17,6 +17,7 @@ ENV/
 *.xml
 *.jpg
 *.png
+!docs/images/*.png
 *.zip
 DICOMDIR
 Data*/

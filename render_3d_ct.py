@@ -10,7 +10,7 @@ from vtkmodules.all import (
     vtkCamera, vtkFixedPointVolumeRayCastMapper
 )
 
-data_root = "D:\\边绍康华西检查\\打包 (2) (1)\\打包_data"
+data_root = os.path.dirname(os.path.abspath(__file__))
 output_dir = os.path.join(data_root, "images")
 os.makedirs(output_dir, exist_ok=True)
 

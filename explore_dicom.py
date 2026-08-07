@@ -1,6 +1,6 @@
 import pydicom, os, glob
 
-base = r'D:\边绍康华西检查\打包 (2) (1)\打包_data'
+base = os.path.dirname(os.path.abspath(__file__))
 
 # Read first DICOM file from Data1
 dcm_files = sorted(glob.glob(os.path.join(base, 'Data1', '*.dcm')))
